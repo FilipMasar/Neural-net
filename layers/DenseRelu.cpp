@@ -3,6 +3,7 @@
 //
 
 #include "DenseRelu.h"
+#include <stdlib.h>
 
 using matrix = std::vector<std::vector<double> >;
 using vec = std::vector<double>;

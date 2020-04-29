@@ -15,30 +15,30 @@ int main() {
     vector<vector<double> > test_images;
     vector<int> test_labels;
 
-    int N = 1000;
+    int N_train = 1000;
+    int N_test = 500;
 
     cout << "Loading dataset ..." << endl;
-    DataManage::load_data(train_images, train_labels, "mnist_train.csv", N, 785);
-    DataManage::load_data(test_images, test_labels, "mnist_test.csv", 300, 785);
+    DataManage::load_data(train_images, train_labels, "mnist_train.csv", N_train, 785);
+    DataManage::load_data(test_images, test_labels, "mnist_test.csv", N_test, 785);
 
-    cout << "Normalizing dataset ..." << endl;
     DataManage::normalize(train_images);
     DataManage::normalize(test_images);
 
-    cout << "Creating layers ..." << endl;
     DenseRelu l1(1000, 784);
     Softmax softmax(10, 1000);
 
     int epochs = 10;
     double learning_rate = 0.1;
 
+    cout << "Training ..." << endl;
     for (int i = 0; i < epochs; ++i) {
         cout << "Epoch " << i+1 << "/" << epochs << endl;
         double totalLoss = 0;
         int totalCorrect = 0;
 
-        for (int j = 0; j < N; ++j) {
-            if (j % 100 == 0) cout << "\r" << j << "/" << N << flush;
+        for (int j = 0; j < N_train; ++j) {
+            if (j % 100 == 99) cout << "\r" << j+1 << "/" << N_train << flush;
             // forward
             auto hidden = l1.forwardPropagation(train_images[j]);
             auto predictions = softmax.forwardPropagation(hidden);
@@ -53,7 +53,7 @@ int main() {
 
         }
 
-        double accuracy = static_cast<double>(totalCorrect) / static_cast<double>(N);
+        double accuracy = static_cast<double>(totalCorrect) / static_cast<double>(N_train);
         cout << " - loss: " << totalLoss << " - accuracy: " << accuracy << endl;
     }
 
@@ -62,7 +62,7 @@ int main() {
 
     double totalLoss = 0;
     int totalCorrect = 0;
-    for (int i = 0; i < test_images.size(); ++i) {
+    for (int i = 0; i < N_test; ++i) {
         // forward
         auto hidden = l1.forwardPropagation(test_images[i]);
         auto predictions = softmax.forwardPropagation(hidden);
@@ -72,7 +72,7 @@ int main() {
         totalCorrect += get<1>(tuple);
     }
 
-    double accuracy = static_cast<double>(totalCorrect) / static_cast<double>(test_images.size());
+    double accuracy = static_cast<double>(totalCorrect) / static_cast<double>(N_test);
     cout << "TEST LOSS: " << totalLoss << endl;
     cout << "TEST ACCURACY: " << accuracy << endl;
 
