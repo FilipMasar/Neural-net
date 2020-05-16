@@ -56,6 +56,7 @@ Mnist contains 60000 training example and 10000 test example.
 `mymodel.txt` is example of pretrained model - it got 96,4% accuracy on testset containing 5000 data.
 Its input dimensionality is 784
 
+If during training you get loss `nan` it means that training did not converged. Try decreasing learning_rate!
 
 ### Network architecture
 INPUT -> multiple fully connected layers with RELU -> Fully connected layer with SOFTMAX -> CROSS ENTROPY LOSS
