@@ -1,7 +1,7 @@
-#include "DataManage.h"
+#include "MnistManage.h"
 
 
-void DataManage::load_mnist_train(std::vector<std::vector<double> > &images, std::vector<int> &labels, int n_row) {
+void Mnist::load_mnist_train(std::vector<std::vector<double> > &images, std::vector<int> &labels, int n_row) {
     assert(((void)"There is not that much data in train_set! 60000 is maximum", (n_row <= 60000)));
 
     int n_col = 785;
@@ -36,7 +36,7 @@ void DataManage::load_mnist_train(std::vector<std::vector<double> > &images, std
 }
 
 
-void DataManage::load_mnist_test(std::vector<std::vector<double> > &dev_images, std::vector<int> &dev_labels,
+void Mnist::load_mnist_test(std::vector<std::vector<double> > &dev_images, std::vector<int> &dev_labels,
                                  std::vector<std::vector<double> > &test_images, std::vector<int> &test_labels,
                                  int n_row_dev, int n_row_test) {
 
@@ -91,7 +91,7 @@ void DataManage::load_mnist_test(std::vector<std::vector<double> > &dev_images, 
 }
 
 
-void DataManage::normalize(std::vector<std::vector<double> > &images) {
+void Mnist::normalize(std::vector<std::vector<double> > &images) {
     for (auto &a : images) {
         for (auto &b : a) {
             b /= 255;

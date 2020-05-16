@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-#include "DataManage.h"
+#include "utils/MnistManage.h"
 #include "network/Network.h"
 
 using namespace std;
@@ -20,12 +20,12 @@ int main() {
     int N_test = 5000;
 
     cout << "Loading dataset ..." << endl;
-    DataManage::load_mnist_train(train_images, train_labels, N_train);
-    DataManage::load_mnist_test(dev_images, dev_labels, test_images, test_labels, N_dev, N_test);
+    Mnist::load_mnist_train(train_images, train_labels, N_train);
+    Mnist::load_mnist_test(dev_images, dev_labels, test_images, test_labels, N_dev, N_test);
 
-    DataManage::normalize(train_images);
-    DataManage::normalize(dev_images);
-    DataManage::normalize(test_images);
+    Mnist::normalize(train_images);
+    Mnist::normalize(dev_images);
+    Mnist::normalize(test_images);
 
 
     // Build the network

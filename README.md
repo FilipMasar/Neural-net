@@ -6,9 +6,9 @@ To train neural net on mnist dataset you first need to download train and test s
 
 
 ## network/Network.h
-`network/Network.h` is the main point of neural net. It should be called to build neural net, train on it and predict using its functions.
+`network/Network.h` is the main point of neural net. It should be called to build neural net, train it and predict using its functions.
 
-The example on how to se Network.h is in `main.cpp`
+The example on how to use Network.h is in `main.cpp`
 
 ```c++
 // constructor takes an input dimensionality
@@ -47,7 +47,7 @@ pretrained_network.load("mymodel.txt");
 
 ```
 
-## DataManage.h
+## utils/MnistManage.h
 provides functions to load mnist datasets
 
 

@@ -1,5 +1,5 @@
-#ifndef NEURAL_NET_DATAMANAGE_H
-#define NEURAL_NET_DATAMANAGE_H
+#ifndef NEURAL_NET_MNISTMANAGE_H
+#define NEURAL_NET_MNISTMANAGE_H
 
 
 #include <iostream>
@@ -10,7 +10,7 @@
 
 
 
-namespace DataManage {
+namespace Mnist {
 
     void load_mnist_train(std::vector<std::vector<double> > &images, std::vector<int> &labels, int n_row);
     void load_mnist_test(std::vector<std::vector<double> > &dev_images, std::vector<int> &dev_labels,
@@ -21,4 +21,4 @@ namespace DataManage {
 
 
 
-#endif //NEURAL_NET_DATAMANAGE_H
+#endif //NEURAL_NET_MNISTMANAGE_H
