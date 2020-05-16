@@ -3,7 +3,6 @@
 //
 
 #include "DenseRelu.h"
-#include <stdlib.h>
 
 using matrix = std::vector<std::vector<double> >;
 using vec = std::vector<double>;
@@ -78,3 +77,20 @@ vec& DenseRelu::backwardPropagation(const vec& derivative, double learning_rate)
     }
     return delta;
 }
+
+int DenseRelu::size() {
+    return n_cur;
+}
+
+int DenseRelu::size_prev() {
+    return n_prev;
+}
+
+std::vector<std::vector<double> >& DenseRelu::get_weights() {
+    return weights;
+}
+
+std::vector<double>& DenseRelu::get_biases() {
+    return biases;
+}
+

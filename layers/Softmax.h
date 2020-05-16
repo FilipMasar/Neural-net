@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <math.h>
+#include <stdlib.h>
 
 
 class Softmax {
@@ -24,9 +25,15 @@ private:
     int n_cur;
 
 public:
+    Softmax() = default;
     Softmax(int n_neurons, int n_neurons_prev);
     std::vector<double>& forwardPropagation(const std::vector<double> in);
     std::vector<double>& backwardPropagation(const std::vector<double>& derivative, double learning_rate);
+
+    int size();
+    int size_prev();
+    std::vector<std::vector<double> >& get_weights();
+    std::vector<double>& get_biases();
 };
 
 

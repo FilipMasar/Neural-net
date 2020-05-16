@@ -6,6 +6,8 @@
 #define NEURAL_NET_DENSERELU_H
 
 #include <vector>
+#include <stdlib.h>
+
 
 class DenseRelu {
 private:
@@ -25,6 +27,11 @@ public:
     DenseRelu(int n_neurons, int n_neurons_prev);
     std::vector<double>& forwardPropagation(const std::vector<double> in);
     std::vector<double>& backwardPropagation(const std::vector<double>& derivative, double learning_rate);
+
+    int size();
+    int size_prev();
+    std::vector<std::vector<double> >& get_weights();
+    std::vector<double>& get_biases();
 };
 
 

@@ -3,7 +3,6 @@
 //
 
 #include "Softmax.h"
-#include <stdlib.h>
 
 using matrix = std::vector<std::vector<double> >;
 using vec = std::vector<double>;
@@ -79,4 +78,20 @@ vec& Softmax::backwardPropagation(const vec& derivative, double learning_rate) {
         biases[i] -=  learning_rate * derivative[i];
     }
     return delta;
+}
+
+int Softmax::size() {
+    return n_cur;
+}
+
+int Softmax::size_prev() {
+    return n_prev;
+}
+
+std::vector<std::vector<double> >& Softmax::get_weights() {
+    return weights;
+}
+
+std::vector<double>& Softmax::get_biases() {
+    return biases;
 }
