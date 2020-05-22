@@ -1,6 +1,19 @@
 # Neural-net
 Implementation of neural net using SGD. Correctness is show on training on mnist dataset.
 
+- [Neural-net](#neural-net)
+    + [Requirements](#requirements)
+- [Usage](#usage)
+- [Documentation](#documentation)
+    + [Network architecture](#network-architecture)
+  * [network directory](#network-directory)
+    + [Network.h](#networkh)
+    + [layers/DenselLayer.h](#layers-densellayerh)
+    + [layers/Softmax.h](#layers-softmaxh)
+  * [utils directory](#utils-directory)
+    + [utils/MnistManage.h](#utils-mnistmanageh)
+    + [utils/DataManage.h](#utils-datamanageh)
+    + [utils/std_image.h](#utils-std-imageh)
 
 ### Requirements
 To train neural net on mnist dataset you first need to download train and test set to datasets directory. Follow `datasets/README.md`
