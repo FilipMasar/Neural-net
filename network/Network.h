@@ -8,9 +8,10 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <tuple>
 
-#include "../layers/DenseRelu.h"
-#include "../layers/Softmax.h"
+#include "layers/DenseRelu.h"
+#include "layers/Softmax.h"
 
 
 class Network {

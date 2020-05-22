@@ -1,5 +1,10 @@
 #include "MnistManage.h"
 
+extern "C" {
+    #define STB_IMAGE_IMPLEMENTATION
+    #include "stb_image.h"
+}
+
 
 void Mnist::load_mnist_train(std::vector<std::vector<double> > &images, std::vector<int> &labels, int n_row) {
     assert(((void)"There is not that much data in train_set! 60000 is maximum", (n_row <= 60000)));
@@ -97,4 +102,28 @@ void Mnist::normalize(std::vector<std::vector<double> > &images) {
             b /= 255;
         }
     }
+}
+
+
+void Mnist::load_mnist_png(std::vector<double> &data, std::string file_path) {
+    data.resize(784);
+
+    int x,y,n;
+//    file_path = "../" + file_path;
+    unsigned char *tmp = stbi_load(file_path.c_str(), &x, &y, &n, 1);
+
+    if (tmp != nullptr) {
+        for(int j = 0; j < 784; ++j) {
+            data[j] = static_cast<double>(tmp[j]);
+        }
+    } else {
+        std::cout << "Error loading png file!\n";
+    }
+
+    // normalize
+    for (auto &a : data) {
+        a /= 255;
+    }
+
+    stbi_image_free(tmp);
 }

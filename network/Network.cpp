@@ -3,8 +3,8 @@
 //
 
 #include "Network.h"
-#include "../layers/DenseRelu.h"
-#include "../layers/Softmax.h"
+#include "layers/DenseRelu.h"
+#include "layers/Softmax.h"
 
 
 void Network::addDenseLayer(int n_neurons) {

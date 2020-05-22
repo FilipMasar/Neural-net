@@ -2,6 +2,7 @@
 #include <vector>
 
 #include "utils/MnistManage.h"
+#include "utils/DataManage.h"
 #include "network/Network.h"
 
 using namespace std;
@@ -49,6 +50,13 @@ int main() {
     // 1 example prediction
     int prediction = network.predict(test_images[0]);
     cout << "prediction " << prediction << " gold " << test_labels[0] << endl;
+
+    // prediction from image file
+    vector<double> image;
+    string path = "datasets/images/0.png";
+    Mnist::load_mnist_png(image, path);
+    prediction = network.predict(image);
+    cout << "Prediction from " << path << ": " << prediction << endl;
 
     return 0;
 }

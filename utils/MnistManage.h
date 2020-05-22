@@ -17,6 +17,8 @@ namespace Mnist {
                          std::vector<std::vector<double> > &test_images, std::vector<int> &test_labels,
                          int n_row_dev, int n_row_test);
     void normalize(std::vector<std::vector<double> > &images);
+
+    void load_mnist_png(std::vector<double> &data, std::string file_path);
 }
 
 
